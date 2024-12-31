@@ -4,3 +4,4 @@ pyfiglet
 datetime
 pytz
 pyttsx3  
+espeak
