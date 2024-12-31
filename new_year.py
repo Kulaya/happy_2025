@@ -40,7 +40,7 @@ st.success("🎉 Happy New Year!")
 font = pyfiglet.figlet_format('Happy New Year')
 st.markdown(f"<pre style='color: yellow;'>{font}</pre>", unsafe_allow_html=True)
 
- Print celebratory messages in the terminal
+ #Print celebratory messages in the terminal
 print("Happy New Year 2025! Wishing you a fantastic year ahead!")
 
 # Generate ASCII art heart
