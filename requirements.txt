@@ -2,3 +2,4 @@ streamlit
 colorama
 pyfiglet
 datetime
+pytz
