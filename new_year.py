@@ -4,6 +4,7 @@ import pytz
 import time  # Ensure time is imported
 from colorama import Fore
 import pyfiglet
+from calendar import calendar
 
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
@@ -63,3 +64,8 @@ st.markdown(f"<pre style='color: green;'>{ascii_art}</pre>", unsafe_allow_html=T
 
 # Final custom message
 st.write("🎉 **Aviti Tech Solutions** wishes you a fantastic year ahead! 🎉")
+def main():
+    st.title("2025 Calendar")
+    year = 2025
+    cal_str = calendar(year)
+    st.text(cal_str)
