@@ -8,7 +8,7 @@ import pyfiglet
 new_year = datetime(datetime.now().year + 1, 1, 1)
 
 # Streamlit app
-st.title("New Year Countdown")
+st.title("Happy New Year Countdown Timer")
 st.write("The countdown to New Year begins!")
 
 # Placeholder for countdown timer
