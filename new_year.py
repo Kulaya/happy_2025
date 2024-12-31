@@ -1,6 +1,5 @@
 import streamlit as st
-from datetime import datetime
-import time
+from datetime import datetime, timedelta
 import pytz
 from colorama import Fore
 import pyfiglet
@@ -9,7 +8,8 @@ import pyfiglet
 local_tz = pytz.timezone("Africa/Nairobi")
 
 # Define the target New Year date in your local timezone
-new_year = datetime(datetime.now().year + 1, 1, 1, tzinfo=pytz.utc).astimezone(local_tz)
+current_year = datetime.now(pytz.utc).astimezone(local_tz).year
+new_year = local_tz.localize(datetime(current_year + 1, 1, 1, 0, 0, 0))  # January 1st, Midnight, Local Time
 
 # Streamlit app
 st.title("New Year Countdown")
@@ -21,14 +21,18 @@ time_placeholder = st.empty()
 
 # Countdown loop
 while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
-    current_time = datetime.now(pytz.utc).astimezone(local_tz)  # Get the current time in local timezone
-    remaining = new_year - current_time  # Calculate remaining time
+    # Get the current time in local timezone
+    current_time = datetime.now(pytz.utc).astimezone(local_tz)
+    
+    # Calculate remaining time
+    remaining = new_year - current_time
     
     # Update placeholders
-    countdown_placeholder.markdown(f"### Time left: {remaining}")
+    countdown_placeholder.markdown(f"### Time left: {str(remaining).split('.')[0]}")  # Remove microseconds
     time_placeholder.markdown(f"**Current Time:** {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
     
-    time.sleep(1)  # Sleep for a second
+    # Sleep for a second
+    time.sleep(1)
 
 # Display Happy New Year message
 st.success("🎉 Happy New Year!")
