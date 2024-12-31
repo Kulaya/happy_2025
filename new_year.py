@@ -1,11 +1,15 @@
 import streamlit as st
 from datetime import datetime
 import time
+import pytz
 from colorama import Fore
 import pyfiglet
 
-# Define the target New Year date
-new_year = datetime(datetime.now().year + 1, 1, 1)
+# Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
+local_tz = pytz.timezone("Africa/Nairobi")
+
+# Define the target New Year date in your local timezone
+new_year = datetime(datetime.now().year + 1, 1, 1, tzinfo=pytz.utc).astimezone(local_tz)
 
 # Streamlit app
 st.title("New Year Countdown")
@@ -16,8 +20,8 @@ countdown_placeholder = st.empty()
 time_placeholder = st.empty()
 
 # Countdown loop
-while datetime.now() < new_year:
-    current_time = datetime.now()  # Get the current time
+while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
+    current_time = datetime.now(pytz.utc).astimezone(local_tz)  # Get the current time in local timezone
     remaining = new_year - current_time  # Calculate remaining time
     
     # Update placeholders
