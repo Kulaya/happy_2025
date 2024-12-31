@@ -4,6 +4,7 @@ import pytz
 import time  # Ensure time is imported
 from colorama import Fore
 import pyfiglet
+from calendar import*
 
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
@@ -53,3 +54,6 @@ print('\n'.join(
      for y in range(15, -15, -1)]
 ))
 print("Aviti Tech Solutions!!")
+
+year = 2025
+print(calendar(year, 2, 1, 8, 4))
