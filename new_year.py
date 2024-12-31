@@ -46,7 +46,7 @@ st.markdown(f"<pre style='color: yellow;'>{font}</pre>", unsafe_allow_html=True)
 # Decorative New Year ASCII art
 ascii_art = '\n'.join(
     [''.join(
-        [('Happy New Year'[(x-y) % 11]
+        [('Happy New Year'[(x-y) % 13]
           if ((x * 0.05) ** 2 + (y * 0.1) ** 2 - 1)
              ** 3 - (x * 0.05) ** 2 * (y * 0.1) ** 3 <= 0 else ' ')
          for x in range(-30, 30)]
