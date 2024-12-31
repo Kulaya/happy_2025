@@ -1,10 +1,12 @@
 import streamlit as st
 from datetime import datetime, timedelta
 import pytz
-import time  # Ensure time is imported
+import time
 from colorama import Fore
 import pyfiglet
-from calendar import*
+
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
 
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
@@ -14,13 +16,12 @@ current_year = datetime.now(pytz.utc).astimezone(local_tz).year
 new_year = local_tz.localize(datetime(current_year + 1, 1, 1, 0, 0, 0))  # January 1st, Midnight, Local Time
 
 # Streamlit app
-st.title("Happy New Year Countdown Timer")
+st.title("New Year Countdown")
 st.write("The countdown to New Year begins!")
 
 # Placeholders for countdown timer and current time
-time_placeholder = st.empty()
 countdown_placeholder = st.empty()
-
+time_placeholder = st.empty()
 
 # Countdown loop
 while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
@@ -42,7 +43,9 @@ st.success("🎉 Happy New Year!")
 font = pyfiglet.figlet_format('Happy New Year')
 st.markdown(f"<pre style='color: yellow;'>{font}</pre>", unsafe_allow_html=True)
 
- #Print celebratory messages in the terminal
+
+
+# Print celebratory messages in the terminal
 print("Happy New Year 2025! Wishing you a fantastic year ahead!")
 
 # Generate ASCII art heart
@@ -54,6 +57,3 @@ print('\n'.join(
      for y in range(15, -15, -1)]
 ))
 print("Aviti Tech Solutions!!")
-
-year = 2025
-print(calendar(year, 2, 1, 8, 4))
