@@ -8,23 +8,13 @@ import pyfiglet
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
 
-# Streamlit app
-st.title("New Year Countdown with Custom Time Adjustment")
-st.write("Countdown to a user-defined target time or New Year begins!")
-
-# Input for user-specified time adjustment (in seconds)
-adjust_time_seconds = st.number_input(
-    "Enter time adjustment in seconds (default is 0 for New Year):",
-    min_value=0, value=0, step=1
-)
-
-# Define the target time based on user adjustment
+# Define the target New Year date in your local timezone
 current_year = datetime.now(pytz.utc).astimezone(local_tz).year
-new_year = (
-    datetime.now(pytz.utc).astimezone(local_tz) + timedelta(seconds=adjust_time_seconds)
-    if adjust_time_seconds > 0
-    else local_tz.localize(datetime(current_year + 1, 1, 1, 0, 0, 0))
-)
+new_year = local_tz.localize(datetime(current_year + 1, 1, 1, 0, 0, 0))  # January 1st, Midnight, Local Time
+
+# Streamlit app
+st.title("New Year Countdown")
+st.write("The countdown to New Year begins!")
 
 # Placeholders for countdown timer and current time
 countdown_placeholder = st.empty()
@@ -49,17 +39,3 @@ while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
 st.success("🎉 Happy New Year!")
 font = pyfiglet.figlet_format('Happy New Year')
 st.markdown(f"<pre style='color: yellow;'>{font}</pre>", unsafe_allow_html=True)
-
-# Decorative New Year ASCII art
-ascii_art = '\n'.join(
-    [''.join(
-        [('Happy New Year'[(x-y) % 11]
-          if ((x * 0.05) ** 2 + (y * 0.1) ** 2 - 1)
-             ** 3 - (x * 0.05) ** 2 * (y * 0.1) ** 3 <= 0 else ' ')
-         for x in range(-30, 30)]
-     ) for y in range(15, -15, -1)]
-)
-st.markdown(f"<pre style='color: green;'>{ascii_art}</pre>", unsafe_allow_html=True)
-
-# Final custom message
-st.write("🎉 **Aviti Tech Solutions** wishes you a fantastic year ahead! 🎉")
