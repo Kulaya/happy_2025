@@ -1,9 +1,13 @@
 import streamlit as st
 from datetime import datetime, timedelta
 import pytz
-import time  # Ensure time is imported
+import time
+import pyttsx3  # Import pyttsx3 for text-to-speech
 from colorama import Fore
 import pyfiglet
+
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
 
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
@@ -17,9 +21,8 @@ st.title("New Year Countdown")
 st.write("The countdown to New Year begins!")
 
 # Placeholders for countdown timer and current time
-time_placeholder = st.empty()
 countdown_placeholder = st.empty()
-
+time_placeholder = st.empty()
 
 # Countdown loop
 while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
@@ -40,3 +43,20 @@ while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
 st.success("🎉 Happy New Year!")
 font = pyfiglet.figlet_format('Happy New Year')
 st.markdown(f"<pre style='color: yellow;'>{font}</pre>", unsafe_allow_html=True)
+
+# Play New Year message with pyttsx3
+engine.say("Happy New Year 2025! Wishing you a fantastic year ahead!")
+engine.runAndWait()
+
+# Print celebratory messages in the terminal
+print("Happy New Year 2025! Wishing you a fantastic year ahead!")
+
+# Generate ASCII art heart
+print('\n'.join(
+    [''.join(
+        [('Happy New Year'[(x-y) % 11]
+          if ((x * 0.05)**2 + (y * 0.1)**2 - 1)**3 - (x * 0.05)**2 * (y * 0.1)**3 <= 0 else ' ')
+         for x in range(-30, 30)])
+     for y in range(15, -15, -1)]
+))
+print("Aviti Tech Solutions!!")
