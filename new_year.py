@@ -32,7 +32,7 @@ while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
     
     # Update placeholders
     countdown_placeholder.markdown(f"### Time left: {str(remaining).split('.')[0]}")  # Remove microseconds
-    time_placeholder.markdown(f"**Current Time:** {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
+    time_placeholder.markdown(f"**Current Date and Time:** {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
     
     # Sleep for a second
     time.sleep(1)
