@@ -3,3 +3,4 @@ colorama
 pyfiglet
 datetime
 pytz
+pyttsx3  
