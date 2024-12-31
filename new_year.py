@@ -1,6 +1,7 @@
 import streamlit as st
 from datetime import datetime, timedelta
 import pytz
+import time  # Ensure time is imported
 from colorama import Fore
 import pyfiglet
 
