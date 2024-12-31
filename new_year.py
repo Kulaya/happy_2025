@@ -8,18 +8,21 @@ import pyfiglet
 new_year = datetime(datetime.now().year + 1, 1, 1)
 
 # Streamlit app
-st.title("Happy New Year Countdown Timer")
+st.title("New Year Countdown")
 st.write("The countdown to New Year begins!")
 
-# Placeholder for countdown timer
-placeholder = st.empty()
+# Placeholders for countdown timer and current time
+countdown_placeholder = st.empty()
+time_placeholder = st.empty()
 
 # Countdown loop
 while datetime.now() < new_year:
-    remaining = new_year - datetime.now()
+    current_time = datetime.now()  # Get the current time
+    remaining = new_year - current_time  # Calculate remaining time
     
-    # Update the placeholder with the remaining time
-    placeholder.markdown(f"### Time left: {remaining}")
+    # Update placeholders
+    countdown_placeholder.markdown(f"### Time left: {remaining}")
+    time_placeholder.markdown(f"**Current Time:** {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
     
     time.sleep(1)  # Sleep for a second
 
