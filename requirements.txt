@@ -1,0 +1,5 @@
+streamlit
+colorama
+pyfiglet
+time
+datetime
