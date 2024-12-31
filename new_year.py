@@ -17,8 +17,9 @@ st.title("New Year Countdown")
 st.write("The countdown to New Year begins!")
 
 # Placeholders for countdown timer and current time
-countdown_placeholder = st.empty()
 time_placeholder = st.empty()
+countdown_placeholder = st.empty()
+
 
 # Countdown loop
 while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
