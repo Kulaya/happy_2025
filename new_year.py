@@ -5,8 +5,7 @@ import time
 from colorama import Fore
 import pyfiglet
 
-# Initialize the text-to-speech engine
-engine = pyttsx3.init()
+
 
 # Set your local timezone (e.g., 'Africa/Nairobi' for East Africa Time)
 local_tz = pytz.timezone("Africa/Nairobi")
