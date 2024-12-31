@@ -13,12 +13,13 @@ current_year = datetime.now(pytz.utc).astimezone(local_tz).year
 new_year = local_tz.localize(datetime(current_year + 1, 1, 1, 0, 0, 0))  # January 1st, Midnight, Local Time
 
 # Streamlit app
-st.title("New Year Countdown")
+st.title("Happy New Year Countdown Timer")
 st.write("The countdown to New Year begins!")
 
 # Placeholders for countdown timer and current time
-countdown_placeholder = st.empty()
 time_placeholder = st.empty()
+countdown_placeholder = st.empty()
+
 
 # Countdown loop
 while datetime.now(pytz.utc).astimezone(local_tz) < new_year:
