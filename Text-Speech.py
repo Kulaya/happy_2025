@@ -1,8 +1,8 @@
 import streamlit as st
 from gtts import gTTS
 
-def create_audiobook(text, output_file):
-    """Convert text to an audiobook and save it."""
+def generate_audio(text, output_file):
+    """Convert text to speech and save as an audio file."""
     tts = gTTS(text=text, lang='en')
     tts.save(output_file)
 
@@ -15,8 +15,9 @@ text = st.text_area("Paste your text below:", height=300)
 # Read button
 if st.button("Read"):
     if text.strip():
-        st.subheader("Here is your pasted text:")
-        st.write(text)
+        output_file = "read_audio.mp3"
+        generate_audio(text, output_file)
+        st.audio(output_file, format="audio/mp3")
     else:
         st.error("Please paste some text to read.")
 
@@ -24,7 +25,7 @@ if st.button("Read"):
 if st.button("Convert to Audiobook"):
     if text.strip():
         output_file = "audiobook.mp3"
-        create_audiobook(text, output_file)
+        generate_audio(text, output_file)
 
         # Provide a download link
         with open(output_file, "rb") as file:
