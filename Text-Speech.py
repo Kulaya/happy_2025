@@ -12,6 +12,14 @@ st.title("Text-to-Audiobook Converter")
 # Text area for user input
 text = st.text_area("Paste your text below:", height=300)
 
+# Read button
+if st.button("Read"):
+    if text.strip():
+        st.subheader("Here is your pasted text:")
+        st.write(text)
+    else:
+        st.error("Please paste some text to read.")
+
 # Convert button
 if st.button("Convert to Audiobook"):
     if text.strip():
