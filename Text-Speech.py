@@ -1,4 +1,3 @@
-
 import streamlit as st
 from gtts import gTTS
 
@@ -10,16 +9,12 @@ def create_audiobook(text, output_file):
 # Streamlit app
 st.title("Text-to-Audiobook Converter")
 
-# File uploader for text files
-uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
+# Text area for user input
+text = st.text_area("Paste your text below:", height=300)
 
-if uploaded_file is not None:
-    # Display uploaded file content
-    text = uploaded_file.read().decode('utf-8')
-    st.text_area("File Content", text, height=300)
-
-    # Convert button
-    if st.button("Convert to Audiobook"):
+# Convert button
+if st.button("Convert to Audiobook"):
+    if text.strip():
         output_file = "audiobook.mp3"
         create_audiobook(text, output_file)
 
@@ -31,3 +26,5 @@ if uploaded_file is not None:
                 file_name="audiobook.mp3",
                 mime="audio/mpeg"
             )
+    else:
+        st.error("Please paste some text before converting.")
